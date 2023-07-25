@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukesBowlingScoreTracker", "LukesBowlingScoreTracker\LukesBowlingScoreTracker.csproj", "{02239DD1-15DB-4249-A220-127FCBDF3FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukesBowlingScoreTrackerTests", "LukesBowlingScoreTrackerTests\LukesBowlingScoreTrackerTests.csproj", "{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02239DD1-15DB-4249-A220-127FCBDF3FA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02239DD1-15DB-4249-A220-127FCBDF3FA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02239DD1-15DB-4249-A220-127FCBDF3FA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02239DD1-15DB-4249-A220-127FCBDF3FA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35EA284D-BE87-459F-B3CF-FA06070AB7C9}
+	EndGlobalSection
+EndGlobal

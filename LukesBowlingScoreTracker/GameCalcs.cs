@@ -29,8 +29,8 @@ namespace LukesBowlingScoreTracker
                     continue;
                 }
 
-                // This logic will add completed spares, strikes, and regular frames (and check if calcs on strikes
-                // and spares can be completed)
+                // This logic will add completed spares, strikes, final frames, and regular frames
+                // (and will check if calcs on strikesand spares can be completed)
                 if (frame.IsFinalScoreForFrame)
                 {
                     scoreTotal += frame.GetTotalScoreForFrame();
@@ -55,10 +55,6 @@ namespace LukesBowlingScoreTracker
 
         private int CalculateStrikeScoreTotal(int positionInFrameArray)
         {
-            // TODO: Add logic to handle the final frames
-            // 9th frame
-            // 10th frame
-
             int scoreForFirstFrameAfterStrike = 0;
             int scoreForSecondFrameAfterStrike = 0;
             int strikeFrameIndex = positionInFrameArray;
@@ -79,6 +75,13 @@ namespace LukesBowlingScoreTracker
             else if (nextFrame.GetType() == typeof(Strike))
             {
                 ((Strike)_frames[strikeFrameIndex]).FirstFrameAfterStrikeTotalScore = 10;
+            }
+            else if (nextFrame.GetType() == typeof(FinalFrame))
+            {
+                ((Strike)_frames[strikeFrameIndex]).FirstFrameAfterStrikeTotalScore = nextFrame.FirstAttemptScore;
+                ((Strike)_frames[strikeFrameIndex]).SecondFrameAfterStrikeTotalScore = nextFrame.SecondAttemptScore;
+                _frames[strikeFrameIndex].IsFinalScoreForFrame = true;
+                return _frames[strikeFrameIndex].GetTotalScoreForFrame();
             }
             else
             {
@@ -110,11 +113,6 @@ namespace LukesBowlingScoreTracker
 
         private int CalculateSpareScoreTotal(int positionInFrameArray)
         {
-            // TODO: Add logic to handle the final frames
-            // 9th frame
-            // 10th frame
-
-
             int spareFrameIndex = positionInFrameArray;
 
             if (_frames[spareFrameIndex + 1] == null)

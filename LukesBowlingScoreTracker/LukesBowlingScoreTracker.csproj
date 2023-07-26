@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CmdLineScoreTrackingUI.cs" />
+    <Compile Include="FrameScoringTypes\FinalFrame.cs" />
     <Compile Include="FrameScoringTypes\IFrame.cs" />
     <Compile Include="FrameScoringTypes\RegularFrame.cs" />
     <Compile Include="FrameScoringTypes\Spare.cs" />

@@ -5,7 +5,8 @@ using System;
 namespace LukesBowlingScoreTrackerTests
 {
     /// <summary>
-    /// See README.md on the github page to see the scorecard/games that these tests simulate
+    /// See ScorecardImages on the github page or in your local directory to see the scorecard/games that these 
+    /// tests simulate (ScorecardImages.png)
     /// </summary>
     [TestClass]
     public class SimulatedGame_Tests

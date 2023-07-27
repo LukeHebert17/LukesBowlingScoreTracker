@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukesBowlingScoreTracker", "LukesBowlingScoreTracker\LukesBowlingScoreTracker.csproj", "{02239DD1-15DB-4249-A220-127FCBDF3FA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukesBowlingScoreTrackerTests", "LukesBowlingScoreTrackerTests\LukesBowlingScoreTrackerTests.csproj", "{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LukesBowlingScoreTracker.Tests", "LukesBowlingScoreTrackerTests\LukesBowlingScoreTracker.Tests.csproj", "{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineScoreTrackerUI", "CommandLineScoreTrackerUI\CommandLineScoreTrackerUI.csproj", "{704F5C11-1331-4333-B5C9-2938313670D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RunApp", "RunApp\RunApp.csproj", "{482811D2-604B-4460-BCC9-291F8C5DDB78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F17253F2-09ED-4EBF-A5F0-8132F5FD7BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{704F5C11-1331-4333-B5C9-2938313670D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{704F5C11-1331-4333-B5C9-2938313670D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{704F5C11-1331-4333-B5C9-2938313670D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{704F5C11-1331-4333-B5C9-2938313670D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482811D2-604B-4460-BCC9-291F8C5DDB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482811D2-604B-4460-BCC9-291F8C5DDB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482811D2-604B-4460-BCC9-291F8C5DDB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482811D2-604B-4460-BCC9-291F8C5DDB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

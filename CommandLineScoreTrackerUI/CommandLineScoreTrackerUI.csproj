@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{02239DD1-15DB-4249-A220-127FCBDF3FA0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>LukesBowlingScoreTracker</RootNamespace>
-    <AssemblyName>LukesBowlingScoreTracker</AssemblyName>
+    <ProjectGuid>{704F5C11-1331-4333-B5C9-2938313670D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommandLineScoreTrackerUI</RootNamespace>
+    <AssemblyName>CommandLineScoreTrackerUI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,19 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrameScoringTypes\FinalFrame.cs" />
-    <Compile Include="FrameScoringTypes\IFrame.cs" />
-    <Compile Include="FrameScoringTypes\RegularFrame.cs" />
-    <Compile Include="FrameScoringTypes\Spare.cs" />
-    <Compile Include="FrameScoringTypes\Strike.cs" />
-    <Compile Include="FrameSummary.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameCalcs.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CLIBowlingTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\LukesBowlingScoreTracker\LukesBowlingScoreTracker.csproj">
+      <Project>{02239dd1-15db-4249-a220-127fcbdf3fa0}</Project>
+      <Name>LukesBowlingScoreTracker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

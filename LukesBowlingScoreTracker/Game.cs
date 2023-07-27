@@ -9,8 +9,13 @@ using System.Threading.Tasks;
 [assembly: InternalsVisibleTo("LukesBowlingScoreTrackerTests")]
 namespace LukesBowlingScoreTracker
 {
+    /// <summary>
+    /// Class used to calculate and represent real-world actions done to score a round of bowling and enforce the rules
+    /// via exceptions and various pieces of logic.
+    /// </summary>
     public partial class Game
     {
+        public bool IsGameFinal { get; private set;  }
         private IFrame[] _frames;
         private int _currentFrame;
         private int _currentScoreTotal;
@@ -25,6 +30,7 @@ namespace LukesBowlingScoreTracker
             _currentFrame = 1;
             _throwsPerFrameCount = 0;
             _isFinalFrame = false;
+            IsGameFinal = false;
         }
 
         public int GetCurrentFrameNumber()
@@ -40,6 +46,44 @@ namespace LukesBowlingScoreTracker
             return (_currentScoreTotal);
         }
 
+        /// <summary>
+        /// Assembles a list of displayable frame summary objects with some information about each
+        /// </summary>
+        /// <returns>Returns a list of displayable frame summary objects</returns>
+        public List<FrameSummary> GetFrameSummaries()
+        {
+            List<FrameSummary> frameSummaries = new List<FrameSummary>();
+            foreach (var frame in _frames)
+            {
+                if (frame != null)
+                {
+                    string frameTypeName = frame.GetType().Name;
+                    // int framePosition, bool isFinalScoreForFrame, string type, int? firstThrowPins, int? secondThrowPins, int? thirdThrowPins = null
+                    if (frameTypeName == "Strike")
+                    {
+                        frameSummaries.Add(new FrameSummary(frame.FrameNumber, frame.IsFinalScoreForFrame,
+                            frameTypeName, frame.FirstAttemptScore, null));
+                    }
+                    else if (frameTypeName == "FinalFrame")
+                    {
+                        int frameThirdThrow = ((FinalFrame)frame).ThirdAttemptScore;
+                        frameSummaries.Add(new FrameSummary(frame.FrameNumber, frame.IsFinalScoreForFrame,
+                            frameTypeName, frame.FirstAttemptScore, frame.SecondAttemptScore, frameThirdThrow));
+                    }
+                    else // handles regular frames and spares
+                    {
+                        frameSummaries.Add(new FrameSummary(frame.FrameNumber, frame.IsFinalScoreForFrame,
+                            frameTypeName, frame.FirstAttemptScore, frame.SecondAttemptScore));
+                    }
+                    
+                }
+            }
+            return frameSummaries;
+        }
+
+        /// <summary>
+        /// Records a strike and handles strike frame creation/conditions
+        /// </summary>
         private void Strike()
         {
             // For all frames before the final frame
@@ -57,6 +101,11 @@ namespace LukesBowlingScoreTracker
             }
         }
 
+        /// <summary>
+        /// Record the first throw/roll of the frame
+        /// </summary>
+        /// <param name="pinsKnockedDownInFirstThrow"></param>
+        /// <exception cref="Exception">Between 0 and 10 pins are the only acceptable inputs</exception>
         public void FirstAttemptOfFrame(int pinsKnockedDownInFirstThrow)
         {
             if (pinsKnockedDownInFirstThrow > 10 || pinsKnockedDownInFirstThrow < 0)
@@ -78,6 +127,11 @@ namespace LukesBowlingScoreTracker
             
         }
 
+        /// <summary>
+        /// Records the second throw/roll of the frame (if applicable)
+        /// </summary>
+        /// <param name="pinsKnockedDownInSecondThrow"></param>
+        /// <exception cref="Exception"></exception>
         public void SecondAttemptOfFrame(int pinsKnockedDownInSecondThrow)
         {
             // Doing some validation - can't allow score totals greater than 10 or throwing another ball for this frame
@@ -92,6 +146,7 @@ namespace LukesBowlingScoreTracker
                 throw new Exception("Strike has been thrown for this frame - no more throws can be made");
 
             var pinsKnockedDownInFirstThrow = _frames[_currentFrame - 1].FirstAttemptScore;
+
             // Setting how many pins were knocked down in the second throw
             _frames[_currentFrame - 1].SecondAttemptScore = pinsKnockedDownInSecondThrow;
 
@@ -193,18 +248,29 @@ namespace LukesBowlingScoreTracker
                     throw new Exception("Cannot move to end game - the second throw must be completed.");
                 }
                 _currentScoreTotal = TallyScoreSoFar();
+                IsGameFinal = true;
                 return GetCurrentScoreTotal();
             }
             return GetCurrentScoreTotal();
         }
 
 
-
+        /// <summary>
+        /// Check if a frame's total makes it a spare
+        /// </summary>
+        /// <param name="pinsKnockedDownInFirstThrow"></param>
+        /// <param name="pinsKnockedDownInSecondThrow"></param>
+        /// <returns></returns>
         private bool IsSpare(int pinsKnockedDownInFirstThrow, int pinsKnockedDownInSecondThrow)
         {
             return pinsKnockedDownInFirstThrow + pinsKnockedDownInSecondThrow == 10;
         }
 
+        /// <summary>
+        /// Check the type of a frame without accessing private attributes
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public string GetCurrentFrameTypeName()
         {
             if (_frames[_currentFrame - 1] == null)
@@ -213,6 +279,10 @@ namespace LukesBowlingScoreTracker
             return _frames[_currentFrame - 1].GetType().Name;
         }
 
+        /// <summary>
+        /// Used to check if a third throw/roll can be done in the final frame - also protects private attribute
+        /// </summary>
+        /// <returns></returns>
         public bool CanMakeThirdThrowThisFrame()
         {
             return _canMakeThirdThrow;

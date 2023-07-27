@@ -4,6 +4,9 @@ using System;
 
 namespace LukesBowlingScoreTrackerTests
 {
+    /// <summary>
+    /// General tests for the Game.cs and GameCalcs.cs files
+    /// </summary>
     [TestClass]
     public class GameLogic_Tests
     {

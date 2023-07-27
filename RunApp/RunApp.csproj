@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{02239DD1-15DB-4249-A220-127FCBDF3FA0}</ProjectGuid>
+    <ProjectGuid>{482811D2-604B-4460-BCC9-291F8C5DDB78}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LukesBowlingScoreTracker</RootNamespace>
-    <AssemblyName>LukesBowlingScoreTracker</AssemblyName>
+    <RootNamespace>RunApp</RootNamespace>
+    <AssemblyName>RunApp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RunApp.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,19 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrameScoringTypes\FinalFrame.cs" />
-    <Compile Include="FrameScoringTypes\IFrame.cs" />
-    <Compile Include="FrameScoringTypes\RegularFrame.cs" />
-    <Compile Include="FrameScoringTypes\Spare.cs" />
-    <Compile Include="FrameScoringTypes\Strike.cs" />
-    <Compile Include="FrameSummary.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameCalcs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommandLineScoreTrackerUI\CommandLineScoreTrackerUI.csproj">
+      <Project>{704f5c11-1331-4333-b5c9-2938313670d5}</Project>
+      <Name>CommandLineScoreTrackerUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LukesBowlingScoreTracker\LukesBowlingScoreTracker.csproj">
+      <Project>{02239dd1-15db-4249-a220-127fcbdf3fa0}</Project>
+      <Name>LukesBowlingScoreTracker</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

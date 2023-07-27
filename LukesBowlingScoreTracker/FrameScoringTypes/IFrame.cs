@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace LukesBowlingScoreTracker.FrameScoringTypes
 {
+    /// <summary>
+    /// Represents all frames internal to the Game class
+    /// </summary>
     internal interface IFrame
     {
         int FirstAttemptScore { get; set; }

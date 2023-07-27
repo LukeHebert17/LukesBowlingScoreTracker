@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace LukesBowlingScoreTracker
 {
     /// <summary>
-    /// The purpose of this class is to store the calculations used by the Game-class objects since those can make things a bit cluttured
+    /// The purpose of this class is to store the calculations used by the Game-class objects since those can make things 
+    /// in the main Game.cs file a bit cluttered.
     /// </summary>
     public partial class Game
     {
@@ -53,6 +54,11 @@ namespace LukesBowlingScoreTracker
             return scoreTotal;
         }
 
+        /// <summary>
+        /// Calculating scores for strikes
+        /// </summary>
+        /// <param name="positionInFrameArray">frame's index in Game's array used to track place in game</param>
+        /// <returns>returns score if it can be calculated, zero if not</returns>
         private int CalculateStrikeScoreTotal(int positionInFrameArray)
         {
             int scoreForFirstFrameAfterStrike = 0;
@@ -111,6 +117,11 @@ namespace LukesBowlingScoreTracker
 
         }
 
+        /// <summary>
+        /// Calculating scores for spares
+        /// </summary>
+        /// <param name="positionInFrameArray">frame's index in Game's array used to track place in game</param>
+        /// <returns>returns score if it can be calculated, zero if not</returns>
         private int CalculateSpareScoreTotal(int positionInFrameArray)
         {
             int spareFrameIndex = positionInFrameArray;

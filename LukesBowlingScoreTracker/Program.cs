@@ -11,6 +11,7 @@ namespace LukesBowlingScoreTracker
         static void Main(string[] args)
         {
             // Accidentally made this project a console app and not a class library - please set startup project as RunApp
+            Console.WriteLine("Please set Start-Up project as RunApp");
         }
     }
 }
